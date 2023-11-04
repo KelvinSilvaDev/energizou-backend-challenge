@@ -11,7 +11,8 @@ export class CreateCompanyTable1698923347199 implements MigrationInterface {
                         name: 'id',
                         type: 'int',
                         isPrimary: true,
-                        generationStrategy: 'increment'
+                        generationStrategy: 'increment',
+                        isGenerated: true,
                     },
                     {
                         name: 'customerName',
@@ -30,7 +31,7 @@ export class CreateCompanyTable1698923347199 implements MigrationInterface {
                     },
                     {
                         name: 'cnpj',
-                        type: 'varchar',
+                        type: 'bigint',
                         isNullable: false
                     },
                     {
@@ -45,18 +46,23 @@ export class CreateCompanyTable1698923347199 implements MigrationInterface {
                     },
                     {
                         name: 'number',
-                        type: 'varchar',
+                        type: 'int',
                         isNullable: false
                     },
                     {
                         name: 'phone',
-                        type: 'varchar',
+                        type: 'bigint',
                         isNullable: false
                     },
                     {
                         name: 'email',
                         type: 'varchar',
                         isNullable: false
+                    },
+                    {
+                        name: 'created_at',
+                        type: 'timestamp',
+                        default: 'now()'
                     }
                 ]
             })

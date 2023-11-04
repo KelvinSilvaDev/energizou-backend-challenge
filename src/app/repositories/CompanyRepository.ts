@@ -4,25 +4,25 @@ import { AppDataSource } from "../../database/data-source";
 
 const companyRepository = AppDataSource.getRepository(Company);
 
-const getCompanies = (): Promise<ICompany[]> => {
+
+const getCompanies = () => {
     return companyRepository.find();
 }
 
-const createCompany = (company: ICompany): Promise<ICompany> => {
+const createCompany = (company: ICompany) => {
     return companyRepository.save(company);
 }
 
-const getCompanyByCnpj = (cnpj: string): Promise<ICompany | null> => {
+const getCompanyByCnpj = (cnpj: number) => {
     return companyRepository.findOne({ where: { cnpj } });
 }
 
-const updateCompanyByCnpj = (cnpj: string, updatedData: ICompany) => {
+const updateCompanyByCnpj = (cnpj: number, updatedData: ICompany) => {
     return companyRepository.update({ cnpj }, updatedData);
 }
 
-const deleteCompanyByCnpj = (cnpj: string) => {
+const deleteCompanyByCnpj = (cnpj: number) => {
     return companyRepository.delete({ cnpj });
-
 }
 
 export default { getCompanies, createCompany, getCompanyByCnpj, updateCompanyByCnpj, deleteCompanyByCnpj }

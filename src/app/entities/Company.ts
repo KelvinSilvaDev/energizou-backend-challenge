@@ -14,19 +14,19 @@ class Company {
     @Column('varchar')
     corporateName: string;
 
-    @Column('varchar')
-    cnpj: string;
+    @Column('bigint') 
+    cnpj: number;
 
-    @Column('varchar')
+    @Column('varchar') 
     cep: string;
 
     @Column('varchar')
     address: string;
 
-    @Column('varchar')
+    @Column('varchar') 
     number: string;
 
-    @Column('varchar')
+    @Column('varchar') 
     phone: string;
 
     @Column('varchar')
@@ -34,7 +34,6 @@ class Company {
 
     @CreateDateColumn()
     created_at: Date;
-
 }
 
 export default Company;
