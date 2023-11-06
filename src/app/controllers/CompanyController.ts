@@ -38,7 +38,15 @@ companyRouter.post('/', async (req: Request, res: Response) => {
         // Tratamento do CEP
         const cleanedCep = cep.replace(/\D/g, ''); // Remove caracteres não numéricos
 
-        // Outras validações e tratamentos podem ser adicionados aqui
+        // Verifica se o CNPJ já está cadastrado
+
+        const companyAlreadyRegistered = await CompanyRepository.getCompanyByCnpj(cnpj);
+
+        if (companyAlreadyRegistered) {
+            return res.status(400).json({
+                error: 'Empresa já cadastrada'
+            });
+        }
 
         // Crie a nova empresa
         const newCompany = await CompanyRepository.createCompany({
